@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Heart, Volume2, VolumeX, Menu, X, Globe } from 'lucide-react';
+import { ShoppingBag, Heart, Menu, X, Globe } from 'lucide-react';
 import BrandIdentity from './BrandIdentity';
 import { useCart } from '../../context/CartContext';
 
-export const Navbar = ({ soundPlaying, onToggleSound }) => {
+export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount, openCart, currency, toggleCurrency, wishlist } = useCart();
@@ -128,33 +128,6 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
             >
               <Globe size={13} strokeWidth={1.5} color="var(--color-gold-muted)" />
               <span>{currency}</span>
-            </button>
-
-            {/* Sound Ambience Toggle (Desktop) */}
-            <button
-              onClick={onToggleSound}
-              title={soundPlaying ? 'Mute Atmosphere' : 'Play Runway Atmosphere'}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.4rem 0.65rem',
-                borderRadius: '2px',
-                border: '1px solid var(--color-border-subtle)',
-                color: 'var(--color-navy-deep)',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.6875rem',
-                letterSpacing: '0.1em',
-                transition: 'all 0.3s ease',
-              }}
-              className="sound-toggle-btn"
-            >
-              {soundPlaying ? (
-                <Volume2 size={15} color="var(--color-teal-accent)" />
-              ) : (
-                <VolumeX size={15} color="var(--color-text-tertiary)" />
-              )}
-              <span className="sound-label">{soundPlaying ? 'ON' : 'OFF'}</span>
             </button>
 
             {/* Wishlist Button */}
@@ -334,13 +307,13 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
               gap: '1.25rem',
             }}
           >
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
+            <div style={{ display: 'flex' }}>
               <button
                 onClick={toggleCurrency}
                 className="btn-couture-outline"
                 style={{
-                  flex: 1,
-                  padding: '0.75rem',
+                  width: '100%',
+                  padding: '0.85rem',
                   fontSize: '0.75rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -349,24 +322,7 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
                 }}
               >
                 <Globe size={15} color="var(--color-gold-muted)" />
-                <span>CURRENCY: {currency}</span>
-              </button>
-
-              <button
-                onClick={onToggleSound}
-                className="btn-couture-outline"
-                style={{
-                  flex: 1,
-                  padding: '0.75rem',
-                  fontSize: '0.75rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                {soundPlaying ? <Volume2 size={15} color="var(--color-teal-accent)" /> : <VolumeX size={15} />}
-                <span>SOUND: {soundPlaying ? 'ON' : 'OFF'}</span>
+                <span>CURRENCY: {currency} (TAP TO SWITCH)</span>
               </button>
             </div>
 
@@ -436,8 +392,7 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
         }
 
         @media (max-width: 768px) {
-          .currency-toggle-btn,
-          .sound-toggle-btn {
+          .currency-toggle-btn {
             display: none !important;
           }
           .cart-trigger-btn {
