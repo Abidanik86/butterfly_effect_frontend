@@ -134,6 +134,7 @@ export const BrandIdentity = ({
       
       <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
         <span
+          className="brand-compact-title"
           style={{
             fontFamily: 'var(--font-serif)',
             fontSize: '1.2rem',
@@ -141,11 +142,13 @@ export const BrandIdentity = ({
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
             color: isDark ? 'var(--color-canvas-primary)' : 'var(--color-navy-deep)',
+            whiteSpace: 'nowrap',
           }}
         >
           Butterfly Effect
         </span>
         <span
+          className="brand-compact-subtitle"
           style={{
             fontFamily: 'var(--font-sans)',
             fontSize: '0.55rem',
@@ -154,11 +157,24 @@ export const BrandIdentity = ({
             textTransform: 'uppercase',
             color: isDark ? 'var(--color-gold-muted)' : 'var(--color-text-secondary)',
             marginTop: '3px',
+            whiteSpace: 'nowrap',
           }}
         >
           Fashion & Online Shopping
         </span>
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .brand-compact-title {
+            font-size: 1.05rem !important;
+            letter-spacing: 0.1em !important;
+          }
+          .brand-compact-subtitle {
+            display: none !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -98,13 +98,15 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
 
           {/* Right Action Icons & Controls */}
           <div
+            className="navbar-actions-group"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '1.25rem',
+              flexShrink: 0,
             }}
           >
-            {/* Currency Switcher */}
+            {/* Currency Switcher (Desktop) */}
             <button
               onClick={toggleCurrency}
               title={`Switch Currency (Current: ${currency})`}
@@ -128,7 +130,7 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
               <span>{currency}</span>
             </button>
 
-            {/* Sound Ambience Toggle */}
+            {/* Sound Ambience Toggle (Desktop) */}
             <button
               onClick={onToggleSound}
               title={soundPlaying ? 'Mute Atmosphere' : 'Play Runway Atmosphere'}
@@ -159,6 +161,7 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
             <a
               href="#trending"
               title="Saved Items"
+              className="wishlist-nav-btn"
               style={{
                 position: 'relative',
                 display: 'inline-flex',
@@ -166,6 +169,7 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
                 justifyContent: 'center',
                 padding: '0.4rem',
                 color: 'var(--color-navy-deep)',
+                flexShrink: 0,
               }}
             >
               <Heart size={18} strokeWidth={1.5} />
@@ -199,18 +203,20 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.6rem',
+                gap: '0.5rem',
                 padding: '0.55rem 1.1rem',
                 background: 'var(--color-navy-deep)',
                 color: 'var(--color-canvas-primary)',
                 borderRadius: '2px',
                 transition: 'all 0.3s ease',
                 boxShadow: '0 4px 14px rgba(12, 35, 64, 0.15)',
+                flexShrink: 0,
               }}
               className="cart-trigger-btn"
             >
               <ShoppingBag size={15} strokeWidth={1.8} color="var(--color-gold-muted)" />
               <span
+                className="cart-text-label"
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.75rem',
@@ -218,22 +224,27 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
                   letterSpacing: '0.12em',
                 }}
               >
-                BAG ({cartCount})
+                BAG
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                }}
+              >
+                ({cartCount})
               </span>
             </button>
 
-            {/* Mobile Menu Hamburger */}
+            {/* Mobile Menu Hamburger (Always Visible on Mobile/Tablet) */}
             <button
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               className="mobile-menu-toggle"
-              style={{
-                display: 'none',
-                padding: '0.4rem',
-                color: 'var(--color-navy-deep)',
-              }}
-              aria-label="Toggle Menu"
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -245,16 +256,55 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 899,
+            zIndex: 9999,
             background: 'var(--color-canvas-primary)',
-            padding: '7rem 2rem 3rem',
+            padding: '2rem 1.75rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            overflowY: 'auto',
           }}
           className="mobile-drawer"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {/* Top Header inside Drawer with Close Button */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingBottom: '1.5rem',
+              borderBottom: '1px solid var(--color-border-subtle)',
+            }}
+          >
+            <BrandIdentity variant="compact" logoSize={34} />
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '50%',
+                background: 'rgba(12, 35, 64, 0.06)',
+                color: 'var(--color-navy-deep)',
+                cursor: 'pointer',
+              }}
+              aria-label="Close Menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.75rem',
+              padding: '2.5rem 0',
+            }}
+          >
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -262,10 +312,11 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '2rem',
+                  fontSize: 'clamp(1.75rem, 6vw, 2.4rem)',
                   color: 'var(--color-navy-deep)',
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.06em',
                   textTransform: 'uppercase',
+                  lineHeight: 1.1,
                 }}
               >
                 {link.label}
@@ -273,31 +324,105 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
             ))}
           </div>
 
+          {/* Mobile Quick Controls Bar: Currency + Sound */}
           <div
             style={{
-              paddingTop: '2rem',
+              paddingTop: '1.5rem',
               borderTop: '1px solid var(--color-border-subtle)',
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              flexDirection: 'column',
+              gap: '1.25rem',
             }}
           >
-            <BrandIdentity variant="symbol-only" logoSize={48} />
-            <span
+            <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <button
+                onClick={toggleCurrency}
+                className="btn-couture-outline"
+                style={{
+                  flex: 1,
+                  padding: '0.75rem',
+                  fontSize: '0.75rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                }}
+              >
+                <Globe size={15} color="var(--color-gold-muted)" />
+                <span>CURRENCY: {currency}</span>
+              </button>
+
+              <button
+                onClick={onToggleSound}
+                className="btn-couture-outline"
+                style={{
+                  flex: 1,
+                  padding: '0.75rem',
+                  fontSize: '0.75rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                }}
+              >
+                {soundPlaying ? <Volume2 size={15} color="var(--color-teal-accent)" /> : <VolumeX size={15} />}
+                <span>SOUND: {soundPlaying ? 'ON' : 'OFF'}</span>
+              </button>
+            </div>
+
+            <div
               style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                color: 'var(--color-text-secondary)',
-                letterSpacing: '0.1em',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}
             >
-              HAUTE COUTURE // 2027
-            </span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.6875rem',
+                  color: 'var(--color-gold-muted)',
+                  letterSpacing: '0.15em',
+                }}
+              >
+                ATELIER DHAKA &bull; PARIS
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.6875rem',
+                  color: 'var(--color-text-secondary)',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                VOL. 01 // 2027
+              </span>
+            </div>
           </div>
         </div>
       )}
 
       <style>{`
+        .mobile-menu-toggle {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          padding: 0;
+          background: rgba(12, 35, 64, 0.05);
+          border: 1px solid var(--color-border-subtle);
+          border-radius: 4px;
+          color: var(--color-navy-deep);
+          cursor: pointer;
+          flex-shrink: 0 !important;
+          transition: all 0.2s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+          background: rgba(12, 35, 64, 0.1);
+        }
+
         @media (max-width: 992px) {
           .desktop-nav-links {
             display: none !important;
@@ -305,10 +430,27 @@ export const Navbar = ({ soundPlaying, onToggleSound }) => {
           .mobile-menu-toggle {
             display: inline-flex !important;
           }
-          .sound-label {
-            display: none;
+          .navbar-actions-group {
+            gap: 0.75rem !important;
           }
         }
+
+        @media (max-width: 768px) {
+          .currency-toggle-btn,
+          .sound-toggle-btn {
+            display: none !important;
+          }
+          .cart-trigger-btn {
+            padding: 0.5rem 0.75rem !important;
+          }
+          .cart-text-label {
+            display: none !important;
+          }
+          .navbar-actions-group {
+            gap: 0.5rem !important;
+          }
+        }
+
         .nav-link-hover::after {
           content: '';
           position: absolute;
