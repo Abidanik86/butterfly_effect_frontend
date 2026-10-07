@@ -1,0 +1,202 @@
+/* ==========================================================================
+   BUTTERFLY EFFECT — MAIN STYLESHEET
+   ========================================================================== */
+
+@import './tokens.css';
+@import './reset.css';
+@import './typography.css';
+
+/* --- Core Layout Wrappers --- */
+.atelier-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-canvas-primary);
+  overflow: clip;
+}
+
+.container-atelier {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3.5rem);
+  padding-right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.container-editorial {
+  width: 100%;
+  max-width: var(--container-editorial);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+.section-spacing {
+  padding-top: clamp(4rem, 10vw, 9rem);
+  padding-bottom: clamp(4rem, 10vw, 9rem);
+}
+
+.section-spacing-sm {
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+  padding-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* --- Luxury Glassmorphic Surfaces --- */
+.glass-panel {
+  background: var(--color-canvas-card);
+  backdrop-filter: var(--backdrop-glass);
+  -webkit-backdrop-filter: var(--backdrop-glass);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 4px;
+}
+
+.glass-panel-dark {
+  background: var(--color-canvas-card-dark);
+  backdrop-filter: var(--backdrop-glass);
+  -webkit-backdrop-filter: var(--backdrop-glass);
+  border: 1px solid var(--color-border-dark);
+  border-radius: 4px;
+}
+
+/* --- High-Fashion Interactive Buttons --- */
+.btn-couture {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  padding: 1.1rem 2.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-canvas-primary);
+  background-color: var(--color-navy-deep);
+  border: 1px solid var(--color-navy-deep);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-couture);
+  cursor: pointer;
+}
+
+.btn-couture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-teal-ethereal);
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-couture);
+  z-index: 0;
+}
+
+.btn-couture:hover::before {
+  transform: translateY(0);
+}
+
+.btn-couture span,
+.btn-couture svg {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-couture:hover {
+  border-color: var(--color-teal-ethereal);
+  box-shadow: 0 10px 25px rgba(27, 106, 133, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-couture-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-navy-deep);
+  background: transparent;
+  border: 1px solid var(--color-border-medium);
+  border-radius: 2px;
+  transition: all 0.3s var(--ease-couture);
+}
+
+.btn-couture-outline:hover {
+  border-color: var(--color-gold-muted);
+  color: var(--color-gold-bright);
+  background: rgba(197, 168, 128, 0.05);
+}
+
+.btn-gold {
+  background: var(--color-gold-muted);
+  color: var(--color-canvas-dark);
+  border-color: var(--color-gold-muted);
+}
+
+.btn-gold:hover {
+  background: var(--color-gold-bright);
+  border-color: var(--color-gold-bright);
+  box-shadow: var(--shadow-gold);
+}
+
+/* --- Editorial Image Containers --- */
+.editorial-media-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-canvas-secondary);
+}
+
+.editorial-media-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-couture);
+}
+
+.editorial-media-wrapper:hover img {
+  transform: scale(1.04);
+}
+
+/* --- Badge & Micro Tags --- */
+.couture-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  color: var(--color-navy-deep);
+}
+
+.couture-badge-gold {
+  border-color: var(--color-border-gold);
+  color: var(--color-gold-bright);
+  background: rgba(7, 19, 31, 0.7);
+}
+
+/* --- Utilities --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,0 +1,81 @@
+/* ==========================================================================
+   BUTTERFLY EFFECT — DESIGN TOKENS
+   Haute Couture Fashion & Online Shopping Atelier
+   Color palette strictly extracted from butterflyeffectlogo.jpeg
+   ========================================================================== */
+
+:root {
+  /* --- Canvas & Backgrounds --- */
+  --color-canvas-primary: #F9F8F5;          /* Warm Natural Linen / Ivory Paper */
+  --color-canvas-secondary: #EFECE3;        /* Muted Warm Ecru */
+  --color-canvas-elevated: #FFFFFF;         /* Pure Optical White */
+  --color-canvas-dark: #07131F;             /* Deep Obsidian Midnight (Act Breaks & Footer) */
+  --color-canvas-card: rgba(255, 255, 255, 0.72); /* Frosted Luxury Glass */
+  --color-canvas-card-dark: rgba(12, 35, 64, 0.45);
+
+  /* --- Core Brand Identifiers (Exact Logo Extraction) --- */
+  --color-navy-deep: #0C2340;               /* Primary Deep Obsidian Navy */
+  --color-navy-medium: #153254;             /* Softened Midnight Blue */
+  --color-navy-light: #20456E;              /* Slate Navy */
+  
+  --color-teal-ethereal: #1B6A85;           /* Peacock Ethereal Teal (Inner Wing Ribbons) */
+  --color-teal-accent: #2A839E;             /* Luminous Sea-Glass Cyan Glow */
+  --color-teal-subtle: rgba(27, 106, 133, 0.12);
+
+  /* --- Luxury Metallic Accents --- */
+  --color-gold-muted: #C5A880;              /* Antique Brushed Champagne Gold */
+  --color-gold-bright: #D4AF37;             /* Pure Gold Accent (Micro-borders, Numbers) */
+  --color-gold-glow: rgba(197, 168, 128, 0.22);
+  --color-gold-subtle: rgba(212, 175, 55, 0.12);
+
+  /* --- Typography Colors --- */
+  --color-text-primary: #0C2340;            /* Primary Obsidian Text */
+  --color-text-secondary: #4A5B6D;          /* Sophisticated Charcoal / Slate */
+  --color-text-tertiary: #7D8F9F;           /* Subtle Muted Tone */
+  --color-text-inverse: #F9F8F5;            /* Warm Linen Ivory on Dark Canvas */
+  --color-text-gold: #C5A880;               /* Accent Gold Text */
+
+  /* --- Borders & Dividers --- */
+  --color-border-subtle: rgba(12, 35, 64, 0.08);
+  --color-border-medium: rgba(12, 35, 64, 0.16);
+  --color-border-gold: rgba(197, 168, 128, 0.35);
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* --- Typographic Families --- */
+  --font-serif: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+
+  /* --- Spatial Rhythm --- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  /* --- Layout Constraints --- */
+  --container-max: 1540px;
+  --container-editorial: 1280px;
+  --container-narrow: 980px;
+  --nav-height: 84px;
+
+  /* --- Shadows & Glass Effects --- */
+  --shadow-subtle: 0 4px 20px rgba(12, 35, 64, 0.04);
+  --shadow-medium: 0 10px 35px rgba(12, 35, 64, 0.08);
+  --shadow-elevated: 0 20px 50px rgba(12, 35, 64, 0.12);
+  --shadow-gold: 0 8px 32px rgba(197, 168, 128, 0.25);
+  --backdrop-blur: blur(16px);
+  --backdrop-glass: blur(24px) saturate(180%);
+
+  /* --- High-Fashion Motion Easing --- */
+  --ease-couture: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-fast: 0.2s var(--ease-couture);
+  --transition-medium: 0.4s var(--ease-couture);
+  --transition-slow: 0.8s var(--ease-couture);
+}

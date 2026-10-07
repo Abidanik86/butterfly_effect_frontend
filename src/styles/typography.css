@@ -1,0 +1,109 @@
+/* ==========================================================================
+   BUTTERFLY EFFECT — EDITORIAL TYPOGRAPHY SYSTEM
+   ========================================================================== */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--color-navy-deep);
+}
+
+.display-mega {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 8vw, 8.5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.display-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.editorial-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: var(--color-gold-muted);
+}
+
+/* Subtle hairline dividers inspired by the logo */
+.brand-hairline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.brand-hairline::before,
+.brand-hairline::after {
+  content: '';
+  flex: 1;
+  max-width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-navy-deep), transparent);
+}
+
+/* Subtitles */
+.subtitle-tracked {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.edition-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-tertiary);
+}
+
+/* Gold Gradient Text Accent */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E6C89C 0%, #C5A880 50%, #A27B48 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-teal-gradient {
+  background: linear-gradient(135deg, #1B6A85 0%, #2A839E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Micro details */
+.currency-price {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-navy-deep);
+}
